@@ -1,0 +1,68 @@
+{
+  "info": {
+    "name": "School Management APIs",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Add School",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/addSchool",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "addSchool"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"ABC Public School\",\n  \"address\": \"MG Road, Pune\",\n  \"latitude\": 18.5204,\n  \"longitude\": 73.8567\n}"
+        },
+        "description": "Creates a new school record."
+      },
+      "response": []
+    },
+    {
+      "name": "List Schools (by proximity)",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{baseUrl}}/listSchools?latitude=18.5204&longitude=73.8567",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "listSchools"
+          ],
+          "query": [
+            {
+              "key": "latitude",
+              "value": "18.5204"
+            },
+            {
+              "key": "longitude",
+              "value": "73.8567"
+            }
+          ]
+        },
+        "description": "Returns all schools sorted nearest-to-farthest from the given coordinates."
+      },
+      "response": []
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:3000"
+    }
+  ]
+}
