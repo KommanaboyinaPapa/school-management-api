@@ -1,5 +1,5 @@
-const pool = require('../config/db');
-const { haversineDistanceMeters } = require('../utils/distance');
+const { pool } = require('../config/db');
+const { haversineDistanceMeters } = require('../utils/distanceCalculator');
 
 /**
  * Small helpers for validation.
@@ -25,7 +25,7 @@ function isValidLongitude(longitude) {
  * POST /addSchool
  * Adds a school to DB after validating the input.
  */
-async function addSchool(req, res) {
+async function addSchool(req, res, next) {
   try {
     const { name, address, latitude, longitude } = req.body ?? {};
 
@@ -63,10 +63,11 @@ async function addSchool(req, res) {
     });
   } catch (error) {
     // Most common failure: MySQL is not running / wrong credentials / table not created.
-    return res.status(500).json({
-      error: 'Database error',
-      message: 'Unable to add school. Check DB connection and schema.'
-    });
+    const err = new Error('Unable to add school. Check DB connection and schema.');
+    err.statusCode = 500;
+    err.publicError = 'Database error';
+    err.publicMessage = 'Unable to add school. Check DB connection and schema.';
+    return next(err);
   }
 }
 
@@ -74,7 +75,7 @@ async function addSchool(req, res) {
  * GET /listSchools?latitude=..&longitude=..
  * Fetches all schools and sorts by nearest distance from given user coordinates.
  */
-async function listSchools(req, res) {
+async function listSchools(req, res, next) {
   try {
     const userLatitude = parseFiniteNumber(req.query.latitude);
     const userLongitude = parseFiniteNumber(req.query.longitude);
@@ -108,10 +109,11 @@ async function listSchools(req, res) {
       schools: sortedSchools
     });
   } catch (error) {
-    return res.status(500).json({
-      error: 'Database error',
-      message: 'Unable to list schools. Check DB connection and schema.'
-    });
+    const err = new Error('Unable to list schools. Check DB connection and schema.');
+    err.statusCode = 500;
+    err.publicError = 'Database error';
+    err.publicMessage = 'Unable to list schools. Check DB connection and schema.';
+    return next(err);
   }
 }
 

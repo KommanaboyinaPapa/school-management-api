@@ -17,4 +17,17 @@ const pool = mysql.createPool({
   queueLimit: 0
 });
 
-module.exports = pool;
+/**
+ * Simple DB connectivity test.
+ * Returns true if DB is reachable, otherwise false.
+ */
+async function testDbConnection() {
+  try {
+    await pool.query('SELECT 1');
+    return true;
+  } catch (err) {
+    return false;
+  }
+}
+
+module.exports = { pool, testDbConnection };

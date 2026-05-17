@@ -57,7 +57,7 @@ USE schooldb;
 CREATE TABLE IF NOT EXISTS schools (
   id INT NOT NULL AUTO_INCREMENT,
   name VARCHAR(255) NOT NULL,
-  address VARCHAR(500) NOT NULL,
+  address TEXT NOT NULL,
   latitude FLOAT NOT NULL,
   longitude FLOAT NOT NULL,
   PRIMARY KEY (id)
@@ -89,7 +89,7 @@ Server runs on:
 
 Health check:
 
-- `GET http://localhost:5000/health`
+- `GET http://localhost:5000/health` (also returns DB connectivity status)
 
 ## API Documentation
 

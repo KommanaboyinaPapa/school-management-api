@@ -1,14 +1,13 @@
 /**
- * Convert degrees to radians.
+ * Distance calculator using the Haversine Formula.
+ *
+ * Returns distance in meters.
  */
+
 function toRadians(degrees) {
   return (degrees * Math.PI) / 180;
 }
 
-/**
- * Haversine formula to calculate distance between two coordinates.
- * Returns distance in meters.
- */
 function haversineDistanceMeters(lat1, lon1, lat2, lon2) {
   const earthRadiusMeters = 6371000;
 

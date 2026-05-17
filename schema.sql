@@ -5,7 +5,7 @@ USE schooldb;
 CREATE TABLE IF NOT EXISTS schools (
   id INT NOT NULL AUTO_INCREMENT,
   name VARCHAR(255) NOT NULL,
-  address VARCHAR(500) NOT NULL,
+  address TEXT NOT NULL,
   latitude FLOAT NOT NULL,
   longitude FLOAT NOT NULL,
   PRIMARY KEY (id)
