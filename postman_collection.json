@@ -25,7 +25,7 @@
         },
         "body": {
           "mode": "raw",
-          "raw": "{\n  \"name\": \"ABC Public School\",\n  \"address\": \"MG Road, Pune\",\n  \"latitude\": 18.5204,\n  \"longitude\": 73.8567\n}"
+          "raw": "{\n  \"name\": \"ABC School\",\n  \"address\": \"Hyderabad\",\n  \"latitude\": 17.385,\n  \"longitude\": 78.4867\n}"
         },
         "description": "Creates a new school record."
       },
@@ -36,7 +36,7 @@
       "request": {
         "method": "GET",
         "url": {
-          "raw": "{{baseUrl}}/listSchools?latitude=18.5204&longitude=73.8567",
+          "raw": "{{baseUrl}}/listSchools?latitude=17.385&longitude=78.4867",
           "host": [
             "{{baseUrl}}"
           ],
@@ -46,11 +46,11 @@
           "query": [
             {
               "key": "latitude",
-              "value": "18.5204"
+              "value": "17.385"
             },
             {
               "key": "longitude",
-              "value": "73.8567"
+              "value": "78.4867"
             }
           ]
         },
@@ -62,7 +62,7 @@
   "variable": [
     {
       "key": "baseUrl",
-      "value": "http://localhost:3000"
+      "value": "http://localhost:5000"
     }
   ]
 }

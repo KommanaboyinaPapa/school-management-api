@@ -1,5 +1,11 @@
 const mysql = require('mysql2/promise');
 
+/**
+ * Creates a MySQL connection pool.
+ *
+ * Note: the pool does NOT connect until you run a query.
+ * So the server can start even if MySQL is not up yet.
+ */
 const pool = mysql.createPool({
   host: process.env.DB_HOST,
   port: process.env.DB_PORT ? Number(process.env.DB_PORT) : 3306,
@@ -11,4 +17,4 @@ const pool = mysql.createPool({
   queueLimit: 0
 });
 
-module.exports = { pool };
+module.exports = pool;

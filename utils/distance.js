@@ -1,10 +1,16 @@
+/**
+ * Convert degrees to radians.
+ */
 function toRadians(degrees) {
   return (degrees * Math.PI) / 180;
 }
 
-// Haversine distance in meters.
+/**
+ * Haversine formula to calculate distance between two coordinates.
+ * Returns distance in meters.
+ */
 function haversineDistanceMeters(lat1, lon1, lat2, lon2) {
-  const R = 6371000; // meters
+  const earthRadiusMeters = 6371000;
 
   const dLat = toRadians(lat2 - lat1);
   const dLon = toRadians(lon2 - lon1);
@@ -17,7 +23,7 @@ function haversineDistanceMeters(lat1, lon1, lat2, lon2) {
       Math.sin(dLon / 2);
 
   const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-  return R * c;
+  return earthRadiusMeters * c;
 }
 
 module.exports = { haversineDistanceMeters };
